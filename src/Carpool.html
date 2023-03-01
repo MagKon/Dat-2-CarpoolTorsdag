@@ -5,6 +5,9 @@
 <script src="Plugins/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 <script src="Plugins/JQuery-3.6.3/JQuery-3.6.3.min.js"></script>
 
+<!--Including variables-->
+<link rel="stylesheet" href="CSS/variables.css">
+
 <!--Including site-specifics-->
 <link rel="stylesheet" href="CSS/Carpool.css">
 
@@ -17,7 +20,7 @@
         <div class="row">
             <div class="row">
                 <div class="col-sm-12">
-                    <img id="imgTopBanner" src="Assets/topbanner.png" alt="top-banner" width="101.9%" height="100%" style="margin-left: -0.98%;">
+                    <img id="imgTopBanner" src="Assets/topbanner2.png" alt="top-banner" width="101.9%" height="100%" style="margin-left: -0.98%;">
                 </div>
             </div>
             <div class="row">
@@ -38,59 +41,127 @@
 
 <body>
 <div class="container">
-    <div class="row text-center">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-            <label for="inputDate" style="padding-right: 10px;">Vælg dato: </label><input type="date" id="inputDate" name="inputDate" class="form-control" style="width: 40%;display: inline;">
-        </div>
-    </div>
-    <br>
-    <br>
-    <div class="row text-center">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-            <label>Er du chauffør eller passenger</label>
-        </div>
-        <div class="col-sm-4"></div>
-    </div>
-    <div class="row text-center">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-            <label for="rbPassenger">Passenger</label>
-            <input name="rbType" type="radio" id="rbPassenger">
-        </div>
-        <div class="col-sm-4"></div>
-    </div>
-    <div class="row text-center">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-            <label for="rbChauffør">Chauffør</label>
-            <input name="rbType" type="radio" id="rbChauffør">
-        </div>
-        <div class="col-sm-4"></div>
-    </div>
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-sm-12 destination">
-            <br>
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <label for="selectFrom">Fra: </label>
-                    <select id="selectFrom" class="form-select" aria-label="Default select example">
-                        <option selected>Vælg en by</option>
-                        <option value="Rønne">Rønne</option>
-                        <option value="Gudhjem">Gudhjem</option>
-                        <option value="Allinge">Allinge</option>
-                        <option value="Klemensker">Klemensker</option>
-                    </select>
-                </div>
-                <div class="col-sm-4"></div>
+<!-- Change to post when back-end is available -->
+    <form id="searchData" name="searchData" class="form-control" action="Results.html" method="get">
+        <div class="row text-center">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 font18">
+                <label for="inputDate" style="padding-right: 10px;">Vælg dato: </label>
+                <input type="date" id="inputDate" name="inputDate" class="form-control" style="width: 40%;display: inline;" required>
             </div>
-            <br>
         </div>
-    </div>
+        <br>
+        <br>
+        <div class="row text-center">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 font18">
+                <label>Er du chauffør eller passenger</label>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4">
+                        <input name="rbType" type="radio" id="rbPassenger" required>
+
+                        <label for="rbPassenger" style="">Passenger</label>
+                        <br>
+                        <input name="rbType" type="radio" id="rbChauffør" required>
+                        <label for="rbChauffør">Chauffør</label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 destination">
+                <br>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4 font18">
+                        <label for="selectFrom">Fra: </label>
+                        <select id="selectFrom" name="selectFrom" class="form-select" aria-label="Default select example" required>
+                            <option disabled selected value>Vælg en by</option>
+                            <option value="Rønne">Rønne</option>
+                            <option value="Nexø">Nexø</option>
+                            <option value="Gudhjem">Gudhjem</option>
+                            <option value="Allinge">Allinge</option>
+                            <option value="Klemensker">Klemensker</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4 font18" style="font-size: 18px;">
+                        <label for="selectTo">Til: </label>
+                        <select id="selectTo" name="selectTo" class="form-select" aria-label="Default select example" required>
+                            <option disabled selected value>Vælg en by</option>
+                            <option value="Rønne">Rønne</option>
+                            <option value="Nexø">Nexø</option>
+                            <option value="Gudhjem">Gudhjem</option>
+                            <option value="Allinge">Allinge</option>
+                            <option value="Klemensker">Klemensker</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+                <br>
+                <br>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+                <input type="submit" class="btn btn-primary" id="btnSearch" value="Find kørelejlighed" style="float: right">
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
+
+<!--<script>-->
+<!--    function validateForm() {-->
+<!--        let isValid = false;-->
+<!--        var form = document.forms["searchData"];-->
+<!--        for (let i = 0 ; i < form.length ; i++) {-->
+<!--            switch (form[i].type) {-->
+<!--                case "text":-->
+<!--                    if (form[i].value === "") {-->
+<!--                        alert("Name must be filled out");-->
+<!--                        return false;-->
+<!--                    } else {-->
+<!--                        return true;-->
+<!--                    }-->
+<!--                case "date":-->
+<!--                    if (form[i].value === "") {-->
+<!--                        alert("Date must be filled out");-->
+<!--                        return false;-->
+<!--                    } else {-->
+<!--                        return true;-->
+<!--                    }-->
+<!--                case "radio":-->
+<!--                    if (!form[i].checked) {-->
+<!--                        alert("Radio must be filled out");-->
+<!--                        return false;-->
+<!--                    } else {-->
+<!--                        return true;-->
+<!--                    }-->
+<!--                case "select-one":-->
+<!--                    if (form[i].value === "Vælg en by") {-->
+<!--                        alert("Select must be filled out");-->
+<!--                        return false;-->
+<!--                    } else {-->
+<!--                        return true;-->
+<!--                    }-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->

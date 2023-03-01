@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="dk">
+<!--Including plugins-->
+<link rel="stylesheet" href="Plugins/bootstrap-5.0.2-dist/css/bootstrap.css">
+<script src="Plugins/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+<script src="Plugins/JQuery-3.6.3/JQuery-3.6.3.min.js"></script>
+
+<!--Including site-specifics-->
+<link rel="stylesheet" href="CSS/Results.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<header class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img id="imgTopBanner" src="Assets/topbanner2.png" alt="top-banner" width="101.9%" height="100%" style="margin-left: -0.98%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div style="float: left;margin-top: -20%;">
+    <label for="imgBackButton">Press the Lord and Savior to return</label>
+    <br>
+    <a href="Carpool.html">
+        <img id="imgBackButton" src="Assets/Lord_And_Savior.png" alt="back-button" width="20%" height="20%">
+    </a>
+</div>
+<body>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 id="h1Title">Her er hvad vi fandt:</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="form-control">
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <h1>Afgang</h1>
+                        </div>
+                        <div class="col-sm-8">
+                            <div id="takeOffData" class="row">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            <div class="col-sm-2"></div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="form-control">
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <h1>Afgang</h1>
+                        </div>
+                        <div class="col-sm-8">
+                            <div id="returnData" class="row">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+        <br>
+    </div>
+</body>
+
+<footer>
+    <hr>
+    <a href="https://www.figma.com/file/O5FUMnsQjJhh3e95gRnezB/Carpool?node-id=0%3A1&t=o6PgcaXYBs5RhULO-0">The Figma this site is based on</a>
+    <hr>
+</footer>
+</html>
+<script>
+    $(document).ready(function () {
+        var urlVars = getUrlVars();
+
+        //print out each value
+        for (var key in urlVars) {
+            console.log(key + " = " + urlVars[key]);
+        }
+        let text = prompt("Vælg mængde af resultater til test: ", "1");
+        createReturnData(parseInt(text));
+        createTakeOffData(parseInt(text));
+    });
+
+    // Read a page's GET URL variables and return them as an associative array.
+    function getUrlVars()
+    {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+
+    function createReturnData(amount) {
+        const returnData = $("#returnData");
+        returnData.empty();
+        for (let i = 1; i <= amount; i) {
+            if (i % 2 !== 0) {
+                returnData.append(returnHTML("Mikkel", "tid: kl 16", "sted: campus parkering", i));
+                i++;
+            } else {
+                returnData.append(returnHTML("Ditlev", "tid: kl 16.10", "sted: ved hoveddøren", i + 1));
+                returnData.append(`<div class="col-sm-12"><br></div>`);
+                i++;
+            }
+        }
+    }
+
+    function createTakeOffData(amount) {
+        const takeOffData = $("#takeOffData");
+        takeOffData.empty();
+        for (let i = 1; i <= amount; i) {
+            if (i % 2 !== 0) {
+                takeOffData.append(takeOffHTML("Mikkel", "tid: kl 8", "sted: havnens parkering", i));
+                i++;
+            } else {
+                takeOffData.append(takeOffHTML("Ditlev", "tid: kl 8.10", "sted: ved busstation", i + 1));
+                takeOffData.append(`<div class="col-sm-12"><br></div>`);
+                i++;
+            }
+        }
+    }
+
+    function returnHTML(name, time, place, id) {
+        return `                            <div class="col-sm-6">
+                                <div class="form-control">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p class="font18">${name}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a>${time}</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a>${place}</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <input type="submit" id="return${id}" class="submit" value="Vælg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+    }
+
+    function takeOffHTML(name, time, place, id) {
+        return `                            <div class="col-sm-6">
+                                <div class="form-control">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p class="font18">${name}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a>${time}</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a>${place}</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <input type="submit" id="takeOff${id}" class="submit" value="Vælg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+    }
+
+</script>
