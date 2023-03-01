@@ -1,0 +1,24 @@
+:root {
+    --main-header-grey: #d9d9d9;
+}
+
+.headerbackground {
+    background-color: var(--main-header-grey);
+    border: 1px solid var(--main-header-grey);
+    border-radius: 5px;
+    margin-top: -1%;
+}
+
+#h1Title {
+    font-size: 300%;
+}
+
+header {
+    margin-bottom: 1%;
+    position: sticky;
+}
+
+.destination {
+    border: 1px solid var(--main-header-grey);
+    border-radius: 5px;
+}
