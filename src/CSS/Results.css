@@ -1,0 +1,14 @@
+#h1Title {
+    font-size: 300%;
+}
+
+.font18 {
+    font-size: 18px;
+}
+
+.submit {
+    border: none;
+    background: none;
+    color: #007bff;
+    font-weight: bold;
+}
